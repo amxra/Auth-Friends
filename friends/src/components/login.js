@@ -1,34 +1,41 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
+import axios from 'axios';
 
-export default class LogIn extends React.Component {
 
-    constructor(){
+export default function LogIn () {
 
-        //useRef hook returns mutable ref whose current property is initialised to the passed argument.
+    const passwordRef = useRef();
+    const usernameRef = useRef();
 
-        const usernameRef = useRef();
-        const passwordRed = useRef();
-
-        const onSubmit = () => {
-            axios.post('', {
-                username: usernameRef.current.value,
-                password: passwordRef.current.value,
-            }), 
-        }
+    const onSubmit = () => {
+        axios.post('http:5000/api/login', {
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+        })
+        .then(res =>{
+            localStorage.setItem('token', res.data.token) // put token string in local storage 
+            
+        })
+        .catch(error =>{
+            
+        })
     }
 
-    render(){
-        return (
+
+
+    return(
+        <div className = 'form'>
             <form>
                 <label>
-                    username:
-                    <input type ="text" name = "name"/>
+                    Username:
+                    <input type = "text" name = "name"/>
                 </label>
                 <label>
-                    password:
-                    <input type ="text" name = "password"/>
+                    Password:
+                    <input type = "password" name = "password"/>
                 </label>
+                <button onClick={onSubmit}>Submit</button>
             </form>
-        )
-    }
+        </div>
+    )
 }
