@@ -13,6 +13,7 @@ function App() {
       <nav className="nav">
         <NavLink exact to='/'>Form</NavLink>
         <NavLink exact to='/friends'>Friends</NavLink>
+        <NavLink to='newFriend' >New Friend</NavLink>
       </nav>
 
       <main>

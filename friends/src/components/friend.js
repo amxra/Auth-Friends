@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Friend ({friend}) {
+export default function FriendCard ({friend, deleteFriend, editFriend}) {
     return(
         <div>
             <h2>{friend.name}</h2>
