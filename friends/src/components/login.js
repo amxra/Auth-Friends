@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import axios from 'axios';
 
 
-export default function LogIn () {
+export default function LogIn (props) {
 
     const passwordRef = useRef();
     const usernameRef = useRef();
@@ -14,7 +14,7 @@ export default function LogIn () {
         })
         .then(res =>{
             localStorage.setItem('token', res.data.token) // put token string in local storage 
-            
+            props.history.push('/friendList')
         })
         .catch(error =>{
             alert(error.response.data.error)
