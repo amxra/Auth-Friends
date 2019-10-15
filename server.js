@@ -74,6 +74,8 @@ app.post('/api/login', (req, res) => {
   }
 });
 
+//authenticator here is a security function. So GET endpoints are protected. You need to make a request with authetication token in the header.
+
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
