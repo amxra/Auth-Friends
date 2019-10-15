@@ -17,7 +17,7 @@ export default function LogIn () {
             
         })
         .catch(error =>{
-            
+            alert(error.response.data.error)
         })
     }
 
@@ -28,11 +28,11 @@ export default function LogIn () {
             <form>
                 <label>
                     Username:
-                    <input type = "text" name = "name"/>
+                    <input type = "text" name = "name" ref={usernameRef}/>
                 </label>
                 <label>
                     Password:
-                    <input type = "password" name = "password"/>
+                    <input type = "password" name = "password" ref={passwordRef}/>
                 </label>
                 <button onClick={onSubmit}>Submit</button>
             </form>
